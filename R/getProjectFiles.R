@@ -3,7 +3,7 @@
 #' @description Get PRIDE project files based on
 #' pride ID
 #' @export
-getProjectFiles <- function(prideID){
+getProjectFiles <- function(){
   load('./data/prideDF.RData')
   # prideID = 'PXD000044'
   idx <- grep(prideID,prideDF$prideID)
@@ -17,7 +17,6 @@ getProjectFiles <- function(prideID){
                   tmpfile
     )
     system(cmd)
-
     dat <- readLines(tmpfile)
 
     if(length(dat) != 0){
