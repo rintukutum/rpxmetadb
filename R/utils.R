@@ -48,8 +48,7 @@ getPrideFTPlinks <- function(){
 }
 
 prideFTPdf <- function(){
-  ftp.file = './data/prideFTPlinks.RData'
-  load(ftp.file)
+  load('./data/prideFTPlinks.RData')
   prideIDs <- sapply(prideFTPlinks,getPrideID)
   outDF <- data.frame(prideID=prideIDs,ftp=prideFTPlinks,stringsAsFactors = FALSE)
   rownames(outDF) <- 1:nrow(outDF)

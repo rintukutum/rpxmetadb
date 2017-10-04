@@ -4,7 +4,7 @@
 #' pride ID
 #' @export
 getProjectFiles <- function(){
-  load('./data/prideDF.RData')
+  data(prideDF)
   # prideID = 'PXD000044'
   idx <- grep(prideID,prideDF$prideID)
   ftplink <- prideDF$ftp[idx]
