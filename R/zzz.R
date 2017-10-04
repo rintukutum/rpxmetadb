@@ -15,7 +15,7 @@
 "prideDF"
 
 #-----------------
-# additonal functions
+# additonal functions for fomating size files
 
 formatSpace <- function(x){
   if(!is.list(x)){
