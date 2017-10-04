@@ -9,18 +9,11 @@ getProjectFiles <- function(prideID){
   idx <- grep(paste0('^',prideID,'$'),
               prideDF$prideID)
   ftplink <- prideDF$ftp[idx]
-  num <- as.numeric(sapply(ftplink,function(x){strsplit(x,split='\\/')[[1]][7]}))
-  idx <- which.max(num)
-  ftplink <- ftplink[idx]
-  tmpfile <- prideID
-  cmd <- paste0("curl -s ",
-                  ftplink,
-                  " > ",
-                  tmpfile
-  )
+  dat <- sapply(ftplink,function(x){strsplit(RCurl::getURL(x),'\n')[[1]]})
+  return(dat)
+}
 
-  system(cmd)
-  dat <- readLines(tmpfile)
-  unlink(tmpfile)
+
+getProjectREADME <- function(prideID){
   return(dat)
 }

@@ -8,4 +8,5 @@ Description: Extract meta data information per PRIDE project
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Imports: plyr
+Imports: plyr,
+    RCurl
