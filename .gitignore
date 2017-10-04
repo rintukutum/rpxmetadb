@@ -3,4 +3,4 @@
 .RData
 .Ruserdata
 run.R
-./data-raw/*
+data-raw/*
