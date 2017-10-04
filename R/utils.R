@@ -43,12 +43,14 @@ getPrideFTPlinks <- function(){
     #----
     # remove the test folder
     prideFTPlinks <- ftpLinks[-grep('test',ftpLinks)]
+    #----
+    # remove any unwanted folders
+    prideFTPlinks <- prideFTPlinks[grep('P',prideFTPlinks)]
     return(prideFTPlinks)
-
 }
 
 prideFTPdf <- function(){
-  load('./data/prideFTPlinks.RData')
+  data("prideFTPlinks")
   prideIDs <- sapply(prideFTPlinks,getPrideID)
   outDF <- data.frame(prideID=prideIDs,ftp=prideFTPlinks,stringsAsFactors = FALSE)
   rownames(outDF) <- 1:nrow(outDF)
