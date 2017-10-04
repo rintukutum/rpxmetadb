@@ -3,7 +3,7 @@
 #' @description Get PRIDE project files based on
 #' pride ID
 #' @export
-getProjectFiles <- function(){
+getProjectFiles <- function(prideID){
   data(prideDF)
   # prideID = 'PXD000044'
   idx <- grep(prideID,prideDF$prideID)
