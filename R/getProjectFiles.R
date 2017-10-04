@@ -16,6 +16,7 @@ getProjectFiles <- function(prideID){
                   "README.txt > ",
                   tmpfile
     )
+
     system(cmd)
     dat <- readLines(tmpfile)
 
