@@ -45,13 +45,24 @@ getPrideFTPlinks <- function(){
   return(prideFTPlinks)
 }
 
+prideFTPdf <- function(){
+  load('./data/prideFTPlinks.RData')
+  prideIDs <- sapply(prideFTPlinks,getPrideID)
+  outDF <- data.frame(prideID=prideIDs,ftp=prideFTPlinks,stringsAsFactors = FALSE)
+  rownames(outDF) <- 1:nrow(outDF)
+  return(outDF)
+}
+
+getPrideID <- function(ftplink){
+  parts <- strsplit(ftplink,split = '\\/')[[1]]
+  prideID <- parts[length(parts)]
+  return(prideID)
+}
 #------
 # get meta information regarding process and raw
 # data in PRIDE ftp
 # additionally information about the size of the
 # files (estimation of size)
-#------
-
 
 
 
