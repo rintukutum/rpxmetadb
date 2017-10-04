@@ -35,7 +35,7 @@ getProjectFiles <- function(prideID){
   }
   check.content <- sapply(dat.ftp,nrow)
   idx.null <- which(sapply(check.content,is.null))
-  if(length(null.val) != 0){
+  if(length(idx.null) != 0){
     #----
     # some repos with two submission
     dat <- dat.ftp[-idx.null][[1]]
