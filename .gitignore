@@ -2,5 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-/data/*.RData
+/data/prideDF.RData
+/data/prideFTPlinks.RData
 run.R
