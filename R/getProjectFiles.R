@@ -9,19 +9,18 @@ getProjectFiles <- function(prideID){
   idx <- grep(paste0('^',prideID,'$'),
               prideDF$prideID)
   ftplink <- prideDF$ftp[idx]
-  dat.ftp <-list()
-  for( i in 1:length(ftplink)){
-    tmpfile <- prideID
-    cmd <- paste0("curl -s ",
-                  ftplink[i],
+  num <- as.numeric(sapply(ftplink,function(x){strsplit(x,split='\\/')[[1]][7]}))
+  idx <- which.max(num)
+  ftplink <- ftplink[idx]
+  tmpfile <- prideID
+  cmd <- paste0("curl -s ",
+                  ftplink,
                   " > ",
                   tmpfile
-    )
+  )
 
-    system(cmd)
-    dat.ftp[[i]] <- readLines(tmpfile)
-  }
+  system(cmd)
+  dat <- readLines(tmpfile)
   unlink(tmpfile)
-  dat <- dat.ftp
   return(dat)
 }
