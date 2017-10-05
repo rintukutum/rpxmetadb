@@ -21,7 +21,7 @@ getProjectREADME <- function(ftplink){
   # to avoid permission deny
   # check url exist/not
   # ftplink <- 'ftp://ftp.pride.ebi.ac.uk/pride/data/archive/2017/05/PXD006174/README.txt'
-  url <- gsub('README.txt',ftplink)
+  url <- gsub('README.txt','',ftplink)
   status.url <- suppressWarnings(RCurl::url.exists(url))
   if(status.url){
     dat <- read.delim(ftplink,stringsAsFactors = FALSE,sep='\t',header = TRUE)
