@@ -26,7 +26,6 @@ getProjectREADME <- function(ftplink){
   if(status.url){
     dat <- read.delim(ftplink,stringsAsFactors = FALSE,sep='\t',header = TRUE)
   }else{
-    # data not available
     dat <- NA
   }
   return(dat)
