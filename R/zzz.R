@@ -77,7 +77,7 @@ getYearMonth <- function(url){
 getLatestREADME <- function(urls){
   idx.dup <- duplicated(urls)
   if(length(which(idx.dup)) != 0){
-    urls <- urls[idx.dup]
+    urls <- urls[-idx.dup]
   }
   if(length(urls) > 1){
     yearMonth <- lapply(urls,getYearMonth)
