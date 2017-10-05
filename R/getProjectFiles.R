@@ -17,6 +17,16 @@ getProjectFiles <- function(prideID){
 # read readme files
 getProjectREADME <- function(ftplink){
   #url <- 'ftp://ftp.pride.ebi.ac.uk/pride/data/archive/2017/01/old_PXD005231/README.txt'
-  dat <- read.delim(ftplink,stringsAsFactors = FALSE,sep='\t',header = TRUE)
+  #----
+  # to avoid permission deny
+  # check url exist/not
+
+  status.url <- suppressWarnings(RCurl::url.exists(ftplink))
+  if(status.url){
+    dat <- read.delim(ftplink,stringsAsFactors = FALSE,sep='\t',header = TRUE)
+  }else{
+    # data not available
+    dat <- NA
+  }
   return(dat)
 }
